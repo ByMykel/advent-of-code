@@ -15,7 +15,6 @@ for i in file.split("\n"):
 
     for j in second:
         if j in seenFirst and j not in seenSecond:
-            print(first, second, j)
             out += alpha.index(j) + 1
             seenSecond[j] = 1
 
