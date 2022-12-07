@@ -5,8 +5,6 @@ tree = dict()
 
 for i in file.split("\n"):
     x = i.split(' ')
-    if x[0] == '$':
-        reading = False
 
     if x[0] == '$' and x[1] == 'cd':
         if x[2] == '..':
@@ -16,8 +14,7 @@ for i in file.split("\n"):
     elif x[0] == '$' and x[1] == 'ls':
         reading = True
         continue
-
-    if reading:
+    else:
         if x[0] != 'dir':
             actual = ''
             for r in routes:
@@ -29,7 +26,7 @@ for i in file.split("\n"):
 free = 70000000 - tree['//']
 tree = {k: v for k, v in sorted(tree.items(), key=lambda item: item[1])}
 
-for k, v in tree.items():
+for v in tree.values():
     if (free + v) >= 30000000:
         print(v)
         break

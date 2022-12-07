@@ -5,8 +5,6 @@ tree = dict()
 
 for i in file.split("\n"):
     x = i.split(' ')
-    if x[0] == '$':
-        reading = False
 
     if x[0] == '$' and x[1] == 'cd':
         if x[2] == '..':
@@ -16,8 +14,7 @@ for i in file.split("\n"):
     elif x[0] == '$' and x[1] == 'ls':
         reading = True
         continue
-
-    if reading:
+    else:
         if x[0] != 'dir':
             actual = ''
             for r in routes:
@@ -26,10 +23,6 @@ for i in file.split("\n"):
                     tree[actual] = 0
                 tree[actual] += int(x[0])
 
-out = 0
-
-for k, v in tree.items():
-    if (v <= 100000):
-        out += v
+out = sum([i for i in tree.values() if i <= 100000])
 
 print(out)
