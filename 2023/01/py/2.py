@@ -15,6 +15,5 @@ for i in content.split("\n"):
         if not r[j].isdigit():
             r[j] = str(valid_digits.index(r[j]) + 1)
     out += 0 if len(r) == 0 else int(r[0] + r[-1])
-    print(i, r, 0 if len(r) == 0 else int(r[0] + r[-1]), out)
 
 print(out)
